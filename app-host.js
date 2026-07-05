@@ -228,6 +228,7 @@ async function revealAnswer(index) {
   });
 
   updates['reveals/' + index + '/correctIndex'] = q.correctIndex;
+  updates['reveals/' + index + '/translation'] = q.translation || '';
   updates['status'] = 'results';
   await db.ref('rooms/' + roomCode).update(updates);
 
@@ -241,6 +242,9 @@ async function revealAnswer(index) {
     div.innerHTML = `<span class="shape">${SHAPES[idx]}</span><span>${escapeHtml(text)} — ${distribution[idx] || 0}</span>`;
     grid.appendChild(div);
   });
+
+  // mostra a tradução (se essa pergunta tiver uma)
+  document.getElementById('results-translation').textContent = q.translation ? ('Tradução: ' + q.translation) : '';
 
   // busca players atualizados para o ranking
   const updatedSnap = await db.ref('rooms/' + roomCode + '/players').once('value');

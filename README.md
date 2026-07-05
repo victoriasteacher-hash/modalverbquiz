@@ -103,13 +103,16 @@ Abra `questions.js` (botão direito > Abrir com > Bloco de Notas). Cada pergunta
   text: "Enunciado da pergunta",
   options: ["Alternativa vermelha", "Alternativa azul", "Alternativa amarela", "Alternativa verde"],
   correctIndex: 1,     // posição da certa: 0=vermelho, 1=azul, 2=amarelo, 3=verde
-  duration: 20          // segundos para responder
+  duration: 20,         // segundos para responder
+  translation: "Tradução da frase trabalhada"  // opcional — aparece só na revelação
 }
 ```
 
 Adicione, remova ou reordene perguntas na lista `QUESTIONS`. Sempre mantenha exatamente 4 alternativas por pergunta.
 
 As perguntas de exemplo seguem seu método: cada expressão vem ancorada num contexto real (uma fala, uma cena, uma música), em vez de tradução solta — troque pelos exemplos autênticos que você já usa em aula.
+
+**Sobre o campo `translation`:** é opcional. Se presente, a tradução aparece tanto na sua tela quanto na tela do aluno, mas só depois que a pergunta é revelada (depois que todos já responderam) — assim ninguém usa a tradução para "colar" durante a pergunta. Se não quiser tradução numa pergunta específica, é só apagar essa linha do bloco dela.
 
 ## Personalizar tempo, cores e nome
 

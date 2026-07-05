@@ -8,78 +8,130 @@
   - options: exatamente 4 alternativas, na ordem vermelho/azul/amarelo/verde
   - correctIndex: posição da alternativa certa (0 = vermelho, 1 = azul, 2 = amarelo, 3 = verde)
   - duration: tempo em segundos para responder
-
-  Dica: siga o método da Vic — ancore o vocabulário em um contexto real
-  (uma frase, uma cena, uma música) em vez de tradução solta.
+  - translation: tradução da frase/expressão trabalhada — só aparece na tela de
+    revelação, depois que todos já responderam (campo opcional; pode remover
+    a linha se não quiser mostrar tradução numa pergunta específica)
 */
 
 const QUESTIONS = [
   {
-    text: "Em 'I'm running late for class', o que significa 'running late'?",
-    options: ["Correndo rápido", "Atrasado(a)", "Com sono", "Perdido(a)"],
+    text: "Na frase \"You must wear a seatbelt in the car.\", o modal must indica:",
+    options: ["Um conselho.", "Uma obrigação.", "Uma possibilidade.", "Uma habilidade."],
     correctIndex: 1,
     duration: 20
   },
   {
-    text: "Terry Crews diz numa entrevista: 'I had a cameo in that movie.' O que é um cameo?",
-    options: [
-      "O papel principal",
-      "Uma participação rápida e especial",
-      "A trilha sonora",
-      "Um erro de gravação"
-    ],
-    correctIndex: 1,
+    text: "Em \"She can swim very well.\", o modal can expressa:",
+    options: ["Habilidade.", "Obrigação.", "Permissão.", "Conselho."],
+    correctIndex: 0,
     duration: 20
   },
   {
-    text: "Numa série, alguém diz: 'I'm freaking out right now!' Essa pessoa está...",
-    options: ["Calma", "Entediada", "Muito nervosa/assustada", "Com fome"],
+    text: "Na frase \"You should study more for the test.\", o modal should significa:",
+    options: ["É proibido.", "É obrigatório.", "É um conselho ou recomendação.", "É uma permissão."],
     correctIndex: 2,
     duration: 20
   },
   {
-    text: "'Can you give me a hand with this?' É um pedido para...",
-    options: ["Um aperto de mão", "Ajuda", "Um aplauso", "Dinheiro"],
+    text: "Em \"May I leave the classroom?\", o modal may é usado para:",
+    options: ["Demonstrar habilidade.", "Fazer uma obrigação.", "Dar um conselho.", "Pedir permissão de forma educada."],
+    correctIndex: 3,
+    duration: 20
+  },
+  {
+    text: "Na frase \"When I was five, I could ride a bike.\", o modal could indica:",
+    options: ["Obrigação no passado.", "Habilidade no passado.", "Permissão.", "Conselho."],
     correctIndex: 1,
     duration: 20
   },
   {
-    text: "Qual frase soa mais natural para recusar um convite de forma educada?",
+    text: "Qual frase expressa um conselho?",
     options: [
-      "I no can go.",
-      "I can't, actually not able.",
-      "I can't make it, but thanks for asking!",
-      "Not possible for me."
+      "You must finish your homework.",
+      "May I use your phone?",
+      "She can play the piano.",
+      "You should drink more water."
     ],
+    correctIndex: 3,
+    duration: 20
+  },
+  {
+    text: "Qual frase expressa uma obrigação?",
+    options: [
+      "I could read when I was six.",
+      "May I come in?",
+      "You must arrive on time.",
+      "She can dance very well."
+    ],
+    correctIndex: 2,
+    duration: 20
+  },
+  {
+    text: "Em qual frase o modal can indica permissão?",
+    options: [
+      "She can cook very well.",
+      "You can use my notebook.",
+      "You should go home.",
+      "We must study."
+    ],
+    correctIndex: 1,
+    duration: 20
+  },
+  {
+    text: "Qual modal completa corretamente a frase?\n\"You __ brush your teeth every day.\"",
+    options: ["can", "may", "could", "should"],
+    correctIndex: 3,
+    duration: 25
+  },
+  {
+    text: "Complete a frase:\n\"Students __ wear uniforms at this school.\"",
+    options: ["could", "must", "may", "should"],
+    correctIndex: 1,
+    duration: 25
+  },
+  {
+    text: "Qual modal completa corretamente?\n\"__ I ask you a question?\"",
+    options: ["Must", "Should", "May", "Couldn't"],
     correctIndex: 2,
     duration: 25
   },
   {
-    text: "Numa música pop, a frase é: 'I've been there before.' O tempo verbal usado indica...",
+    text: "Qual frase mostra uma habilidade no passado?",
     options: [
-      "Uma ação que vai acontecer",
-      "Uma experiência de vida, sem tempo específico",
-      "Uma ordem",
-      "Uma ação acontecendo agora"
+      "I can speak English.",
+      "You should sleep earlier.",
+      "We must be careful.",
+      "I could play chess when I was a child."
     ],
-    correctIndex: 1,
-    duration: 25
-  },
-  {
-    text: "'It's raining cats and dogs!' quer dizer que está...",
-    options: ["Fazendo sol", "Chovendo muito forte", "Nevando", "Ventando"],
-    correctIndex: 1,
+    correctIndex: 3,
     duration: 20
   },
   {
-    text: "Num podcast, o convidado diz: 'Long story short, I moved to another city.' Essa expressão serve para...",
+    text: "O modal correto para completar a frase é:\n\"My grandmother __ speak three languages when she was younger.\"",
+    options: ["can", "may", "could", "should"],
+    correctIndex: 2,
+    duration: 25
+  },
+  {
+    text: "Qual frase expressa uma recomendação?",
     options: [
-      "Contar tudo em detalhes",
-      "Resumir uma história longa",
-      "Mudar de assunto",
-      "Fazer uma pergunta"
+      "You should eat more vegetables.",
+      "You must wear a helmet.",
+      "May I open the window?",
+      "He can run very fast."
     ],
-    correctIndex: 1,
+    correctIndex: 0,
+    duration: 20
+  },
+  {
+    text: "Qual alternativa apresenta o uso correto do modal may?",
+    options: [
+      "You may finish your homework yesterday.",
+      "She may swims every day.",
+      "He may to come later.",
+      "It may rain this afternoon."
+    ],
+    correctIndex: 3,
     duration: 25
   }
 ];

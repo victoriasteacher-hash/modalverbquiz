@@ -147,6 +147,9 @@ function showResultsForIndex(idx, room) {
 
   document.getElementById('results-total-score').textContent = player.score || 0;
 
+  const translation = room.reveals && room.reveals[idx] ? room.reveals[idx].translation : '';
+  document.getElementById('results-translation').textContent = translation ? ('Tradução: ' + translation) : '';
+
   const arr = Object.entries(room.players || {}).map(([id, p]) => ({ id, ...p }));
   arr.sort((a, b) => (b.score || 0) - (a.score || 0));
   const rank = arr.findIndex(p => p.id === playerId) + 1;
