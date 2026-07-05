@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz ao Vivo — Jogar</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- TELA 1: entrar na sala -->
+  <div class="card" id="screen-join">
+    <h1>🎮 Entrar no jogo</h1>
+    <div class="error-msg" id="join-error"></div>
+    <input type="text" id="input-code" placeholder="Código da sala" maxlength="4" inputmode="numeric">
+    <input type="text" id="input-name" placeholder="Seu nome" maxlength="20">
+    <button class="btn-primary" id="btn-join">Entrar</button>
+  </div>
+
+  <!-- TELA 2: aguardando início -->
+  <div class="card" id="screen-waiting" style="display:none">
+    <h2>Você entrou como <span id="waiting-name"></span> 👋</h2>
+    <p class="muted">Olhe para a tela da professora e aguarde o jogo começar...</p>
+  </div>
+
+  <!-- TELA 3: pergunta ativa -->
+  <div class="card wide-card" id="screen-question" style="display:none">
+    <p class="muted">Olhe a pergunta na tela compartilhada e escolha sua resposta:</p>
+    <div class="player-answer-grid" id="player-answer-grid">
+      <button class="player-answer-btn c0" data-choice="0">▲</button>
+      <button class="player-answer-btn c1" data-choice="1">◆</button>
+      <button class="player-answer-btn c2" data-choice="2">●</button>
+      <button class="player-answer-btn c3" data-choice="3">■</button>
+    </div>
+    <p class="muted" id="question-status" style="margin-top:14px"></p>
+  </div>
+
+  <!-- TELA 4: resultado da pergunta -->
+  <div class="card" id="screen-results" style="display:none">
+    <div id="results-feedback"></div>
+    <p class="muted" id="results-points"></p>
+    <h2 style="margin-top:20px">Sua pontuação total</h2>
+    <div class="room-code" id="results-total-score">0</div>
+    <p class="muted" id="results-rank"></p>
+  </div>
+
+  <!-- TELA 5: fim de jogo -->
+  <div class="card" id="screen-final" style="display:none">
+    <h1>🏁 Fim de jogo!</h1>
+    <p class="muted" id="final-rank-text"></p>
+    <h2>Top 3</h2>
+    <ol class="leaderboard" id="final-leaderboard"></ol>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="app-player.js"></script>
+</body>
+</html>

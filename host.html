@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz ao Vivo — Professor(a)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- TELA 1: criar sala -->
+  <div class="card" id="screen-landing">
+    <h1>🎮 Quiz ao Vivo</h1>
+    <p class="subtitle">Painel da professora — compartilhe esta tela na chamada de vídeo.</p>
+    <div class="error-msg" id="landing-error"></div>
+    <button class="btn-primary" id="btn-create-room">Criar sala</button>
+    <a href="index.html"><button class="btn-secondary">Voltar</button></a>
+  </div>
+
+  <!-- TELA 2: lobby / sala de espera -->
+  <div class="card" id="screen-lobby" style="display:none">
+    <h2>Peça para os alunos entrarem com este código:</h2>
+    <div class="room-code" id="lobby-code">----</div>
+    <p class="muted">Em qualquer dispositivo, abrindo <strong>player.html</strong> e digitando o código acima.</p>
+
+    <div id="qr-wrapper" style="margin: 16px 0">
+      <p class="muted" style="margin-bottom:8px">Ou aponte a câmera do celular para o QR code:</p>
+      <div id="qr-code" style="display:flex; justify-content:center"></div>
+    </div>
+
+    <div class="player-list" id="lobby-players"></div>
+    <p class="muted" id="lobby-count">0 aluno(s) na sala</p>
+
+    <div style="margin: 18px 0; text-align:left">
+      <label for="input-duration" class="muted" style="display:block; margin-bottom:6px">
+        Tempo por pergunta (segundos)
+      </label>
+      <input type="text" id="input-duration" value="20" inputmode="numeric"
+             style="width:100px; text-align:center; display:inline-block">
+    </div>
+
+    <button class="btn-primary" id="btn-start-game" disabled>Iniciar jogo</button>
+  </div>
+
+  <!-- TELA 3: pergunta em andamento -->
+  <div class="card wide-card" id="screen-question" style="display:none">
+    <p class="muted" id="question-progress">Pergunta 1 de 8</p>
+    <div class="question-text" id="question-text">...</div>
+    <div class="timer-bar-track"><div class="timer-bar-fill" id="timer-fill"></div></div>
+    <p class="answer-count-badge" id="answer-count">0 de 0 responderam</p>
+    <div class="answer-grid" id="answer-grid-host"></div>
+    <button class="btn-secondary" id="btn-skip-question" style="margin-top:16px">Pular pergunta</button>
+  </div>
+
+  <!-- TELA 4: resultado da pergunta -->
+  <div class="card wide-card" id="screen-results" style="display:none">
+    <h2>Resultado</h2>
+    <div class="answer-grid" id="results-grid"></div>
+    <h2 style="margin-top:24px">Ranking</h2>
+    <ol class="leaderboard" id="results-leaderboard"></ol>
+    <button class="btn-primary" id="btn-next-question">Próxima pergunta</button>
+  </div>
+
+  <!-- TELA 5: fim de jogo -->
+  <div class="card" id="screen-final" style="display:none">
+    <h1>🏆 Fim de jogo!</h1>
+    <div class="podium" id="podium"></div>
+    <ol class="leaderboard" id="final-leaderboard"></ol>
+    <button class="btn-primary" id="btn-new-game">Nova partida</button>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="questions.js"></script>
+  <script src="app-host.js"></script>
+</body>
+</html>
