@@ -182,6 +182,12 @@ async function goToQuestion(index) {
     db.ref('rooms/' + roomCode + '/players').once('value').then(pSnap => {
       const total = pSnap.val() ? Object.keys(pSnap.val()).length : 0;
       document.getElementById('answer-count').textContent = `${answered} de ${total} responderam`;
+
+      // se todo mundo já respondeu, revela a resposta na hora (não espera o tempo acabar)
+      if (total > 0 && answered >= total) {
+        clearTimeout(questionTimeout);
+        revealAnswer(index);
+      }
     });
   });
 
